@@ -1,0 +1,106 @@
+<%- include("partials/header"); -%>
+
+<div class="container-recipe">
+
+  <div class="row">
+    <h1 class="recipe-heading"><%=title%></h1>
+  </div>
+  <div class="row recipe-intro">
+    <p><%=introduction%></p>
+  </div>
+
+  <div class="row recipe-mid">
+    <div class="col-md-6 recipe-left">
+      <img class="recipe-image" src="/image/<%= image %>" alt="">
+    </div>
+    <div class="col-md-3 time-block">
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="time">Prep: </h4>
+        </div>
+        <div class="col-md-6">
+          <% if(prepareTimeHour === null){ %>
+          <h4 class="bold"><%=prepareTimeMin%> mins</h4>
+          <%} else if(prepareTimeMin === null){ %>
+            <% if(prepareTimeHour <= 1){ %>
+              <h4 class="bold"><%=prepareTimeHour%> hr</h4>
+            <% } else { %>
+              <h4 class="bold"><%=prepareTimeHour%> hrs</h4>
+            <% } %>
+          <%} else if(prepareTimeHour != null && prepareTimeMin != null){ %>
+          <h4 class="bold"><%=prepareTimeHour%> hrs <%=prepareTimeMin%> mins</h4>
+          <%}%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <h4 class="time">Cook: </h4>
+        </div>
+        <div class="col-md-6">
+          <% if(cookTimeHour === null){ %>
+          <h4 class="bold"><%=cookTimeMin%> mins</h4>
+          <%} else if(cookTimeMin === null){%>
+            <%if(cookTimeHour <= 1){%>
+              <h4 class="bold"><%=cookTimeHour%> hr</h4>
+            <%} else {%>
+              <h4 class="bold"><%=cookTimeHour%> hrs</h4>
+            <%}%>
+          <%} else if(cookTimeHour != null && cookTimeMin != null){%>
+          <h4 class="bold"><%=cookTimeHour%> hrs <%=cookTimeMin%> mins</h4>
+          <%}%>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-6 expand">
+            <h4 class="time">Ready in: </h4>
+          </div>
+          <div class="col-md-6">
+          <%if(totalTimeHour === null){%>
+          <h4 class="bold"><%=totalTimeMin%> mins</h4>
+          <%} else if(totalTimeMin === null){%>
+            <%if(totalTimeHour <= 1){%>
+              <h4 class="bold"><%=totalTimeHour%> hr</h4>
+            <%} else {%>
+              <h4 class="bold"><%=totalTimeHour%> hrs</h4>
+            <%}%>
+          <%} else if(totalTimeHour != null && totalTimeMin != null){%>
+          <h4 class="bold"><%=totalTimeHour%> hrs <%=totalTimeMin%> mins</h4>
+          <%}%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="time">Servings: </h4>
+          </div>
+          <div class="col-md-6">
+            <h4 class="bold"><%=serving%></h4>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row recipe-bottom">
+    <h3 class="recipe-heading">Ingredients: </h3>
+    <ul>
+      <%for(let i = 0; i < ingredients.length; i++){%>
+      <li class="ingredients"><%=ingredients[i]%></li>
+      <%}%>
+      </ul>
+
+  </div>
+
+  <div class="row recipe-bottom">
+      <h3 class="recipe-heading">Directions</h3>
+      <ol>
+        <%for(let i = 0; i < instructions.length; i++){%>
+      <li class="instructions"><%=instructions[i]%></li>
+      <%}%>
+      </ol>
+  </div>
+</div>
+
+
+
+
+<%- include("partials/footer"); -%>

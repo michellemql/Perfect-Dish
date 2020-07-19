@@ -1,0 +1,32 @@
+<%- include("partials/header"); -%>
+
+<div class="container-home">
+
+
+<div class="row">
+  <% users.forEach(function(user){ %>
+  <% for(let i = 0; i < user.recipes.length; i++){ %>
+  <% var recipeIndex = i; %>
+  <%var imgName = user.recipes[i].image.get('originalname');%>
+  <%var imgFileName = user.recipes[i].image.get('filename');%>
+
+  <div class="col-md-3 home-col">
+    <div class="card home-card">
+      <a href="/posts/<%=user._id%>/<%= recipeIndex %>/<%= imgName %>">
+        <img class="card-img-top home-card-img" src="/image/<%= imgFileName %>" alt="recipe-image">
+      </a>
+      <div class="card-body home-card-body">
+        <a href="/posts/<%=user._id%>/<%= imgName %>">
+          <span class="card-title home-card-title"><%=user.recipes[i].title%></span>
+        </a>
+        <p class="card-text home-card-text"><%=user.recipes[i].introduction.length < 80 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 80) + "..."%></p>
+        <p class="author">By <%=user.username%></p>
+      </div>
+
+    </div>
+  </div>
+  <%}%>
+  <%})%>
+</div>
+</div>
+<%- include("partials/footer"); -%>
