@@ -132,7 +132,7 @@ conn.once('open', function() {
 
 // Create storage engine
 var storage = new GridFsStorage({
-  url: 'mongodb://localhost:27017/blogDB',
+  url: 'mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB',
   useNewUrlParser: true,
   file: (req, file) => {
     return new Promise((resolve, reject) => {
