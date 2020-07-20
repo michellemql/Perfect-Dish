@@ -42,7 +42,6 @@ app.use(passport.session());
 
 
 // MongoDB URI ("mongodb://localhost:27017/blogDB")
-// mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB
 const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test-123@cluster0-8rfhr.mongodb.net/blogDB?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
@@ -89,6 +88,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+// Passport Google OAuth
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -105,6 +105,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+// Passport Facebook OAuth
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -205,16 +206,16 @@ app.get('/auth/facebook/perfectdish',
 // @desc Display all posts
 app.get("/", function(req, res) {
   User.find({}, function(err, users){
-  if (err) {
-    console.log(err);
-  } else {
-    gfs.files.find().toArray(function(err, files){
-      res.render("home", {
-        users: users
+    if (err) {
+      console.log(err);
+    } else {
+      gfs.files.find().toArray(function(err, files){
+        res.render("home", {
+          users: users
+        });
       });
-    });
-  }
-
+    }
+  });
   // User.find({"recipes": {$ne: null}}, function(err, foundUsers) {
   //   gfs.files.find().toArray((err, files) => {
   //     // Check if files
@@ -369,17 +370,7 @@ app.get("/image/:filename", function(req, res) {
 
 
 
-// let port = process.env.PORT;
-//
-// if (port == null || port == "") {
-//   port = 3000;
-// }
-//
 const port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Server started on port:" + port);
 });
-
-// app.listen(3000, function() {
-//   console.log("Server started on port 3000");
-// });
