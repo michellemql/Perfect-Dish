@@ -43,7 +43,7 @@ app.use(passport.session());
 
 // MongoDB URI ("mongodb://localhost:27017/blogDB")
 // mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB
-const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB", {
+const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
 mongoose.set("useCreateIndex", true);
@@ -204,7 +204,7 @@ app.get('/auth/facebook/perfectdish',
 // @route GET /
 // @desc Display all posts
 app.get("/", function(req, res) {
-  User.find({}, function(err, users) {
+  User.find({{"recipes": {$ne: null}}, function(err, users) {
     gfs.files.find().toArray((err, files) => {
       // Check if files
       if (!files || files.length === 0) {
@@ -222,12 +222,14 @@ app.get("/", function(req, res) {
             file.isImage = false;
           }
         });
-        res.render("home", {
-          users: users
-        });
+        if(users){
+          res.render("home", {
+            users: users
+          });
+        }
       }
     });
-  }).sort({$natural:-1});
+  });
 });
 
 
