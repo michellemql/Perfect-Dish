@@ -3,7 +3,10 @@
 <div class="container-home">
 
 <div class="row">
-  <% usersWithRecipes.forEach(function(user){ %>
+  <%if(users === null){%>
+    <p>Welcome</p>
+  <%} else {%>
+  <% users.forEach(function(user){ %>
   <% for(let i = 0; i < user.recipes.length; i++){ %>
   <% var recipeIndex = i; %>
   <%var imgName = user.recipes[i].image.get('originalname');%>
@@ -26,6 +29,8 @@
   </div>
   <%}%>
   <%})%>
+
+  <%}%>
 </div>
 </div>
 
