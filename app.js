@@ -204,7 +204,7 @@ app.get('/auth/facebook/perfectdish',
 // @route GET /
 // @desc Display all posts
 app.get("/", function(req, res) {
-  User.find({{"recipes": {$ne: null}}, function(err, users) {
+  User.find({"recipes": {$ne: null}}, function(err, users) {
     gfs.files.find().toArray((err, files) => {
       // Check if files
       if (!files || files.length === 0) {
