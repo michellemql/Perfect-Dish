@@ -43,7 +43,7 @@ app.use(passport.session());
 
 // MongoDB URI ("mongodb://localhost:27017/blogDB")
 // mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB
-const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test123@cluster0-8rfhr.mongodb.net/blogDB", {
+const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test-123@cluster0-8rfhr.mongodb.net/blogDB?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
 mongoose.set("useCreateIndex", true);
@@ -239,7 +239,7 @@ app.get("/", function(req, res) {
   //     }
   //   });
   // });
-  
+
 });
 
 
