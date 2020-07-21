@@ -66,7 +66,7 @@ a:hover {
   border: 2px solid #fff;
   border-radius: 6px;
   /* box-shadow: 1px 1px 3px 0 #EEEEEE; */
-  box-shadow: 3px 3px 3px 0 #EEEEEE; 
+  box-shadow: 3px 3px 3px 0 #EEEEEE;
   /* padding: 12px; */
   padding: 0;
   margin: 12.7px;
@@ -84,6 +84,13 @@ a:hover {
   background-color: #fff;
   height: 354px;
   border-radius: 3px;
+}
+
+.card-top {
+  height: 225.766px;
+  background-color: #EFEFEF;
+  display: flex;
+  align-items: center;
 }
 
 .home-card-img {
@@ -228,13 +235,16 @@ h4 {
 
 .auth-title {
   margin-top: 10px;
-  margin-bottom: 15px;
-  /* font-family: Georgia, Times, serif; */
+  margin-bottom: 20px; /*15px*/
   font-family: 'Libre Franklin', sans-serif;
 }
 
 .form {
-  margin-bottom: 25px;
+  margin-bottom: 30px; /*25px*/
+}
+
+.form-group {
+  margin-bottom: 20px; /*15px*/
 }
 
 .submit {

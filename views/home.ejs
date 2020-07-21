@@ -14,9 +14,11 @@
 
   <div class="col-md-3 home-col">
     <div class="card home-card">
-      <a href="/posts/<%=user._id%>/<%= recipeIndex %>/<%= imgName %>">
-        <img class="card-img-top home-card-img" src="/image/<%= imgFileName %>" alt="recipe-image">
-      </a>
+      <div class="card-top">
+        <a href="/posts/<%=user._id%>/<%= recipeIndex %>/<%= imgName %>">
+          <img class="card-img-top home-card-img" src="/image/<%= imgFileName %>" alt="recipe-image">
+        </a>
+      </div>
       <div class="card-body home-card-body">
         <a href="/posts/<%=user._id%>/<%= imgName %>">
           <span class="card-title home-card-title"><%=user.recipes[i].title%></span>
