@@ -203,7 +203,7 @@ app.get('/auth/facebook/perfectdish',
 
 
 // @route GET /
-// @desc Display all posts
+// @desc Display all recipes
 app.get("/", function(req, res) {
   User.find({}, function(err, users){
     if (err) {
@@ -215,37 +215,12 @@ app.get("/", function(req, res) {
         });
       });
     }
-  });
-  // User.find({"recipes": {$ne: null}}, function(err, foundUsers) {
-  //   gfs.files.find().toArray((err, files) => {
-  //     // Check if files
-  //     if (!files || files.length === 0) {
-  //       res.render("home", {
-  //         files: false
-  //       });
-  //     } else {
-  //       files.map(file => {
-  //         if (
-  //           file.contentType === 'image/jpeg' ||
-  //           file.contentType === 'image/png'
-  //         ) {
-  //           file.isImage = true;
-  //         } else {
-  //           file.isImage = false;
-  //         }
-  //       });
-  //       if(foundUsers){
-  //         res.render("home", {usersWithRecipes: foundUsers});
-  //       }
-  //     }
-  //   });
-  // });
-
+  }).sort({$natural:-1});
 });
 
 
 // @route GET /compose
-// @desc  Render compose
+// @desc  Create a recipe
 app.get("/compose", function(req, res) {
   if (req.isAuthenticated()) {
     res.render("compose");
@@ -338,6 +313,7 @@ app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
     var currentRecipe = user.recipes[requestedRecipeIndex];
     var imgName = currentRecipe.image.get('filename');
     res.render("post", {
+      username: user.username,
       title: currentRecipe.title,
       serving: currentRecipe.serving,
       prepareTimeHour: currentRecipe.prepareTimeHour,
