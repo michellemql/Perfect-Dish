@@ -252,7 +252,7 @@ h4 {
 }
 
 .right {
-  padding-top: 54px;
+  padding-top: 59px; /*54px*/
   margin-top: 30px;
 }
 
@@ -262,8 +262,8 @@ h4 {
 }
 
 #oauth-divider {
-  margin-top: 24px;
-  margin-bottom: 18px;
+  margin-top: 25px; /*24*/
+  /* margin-bottom: 18px; */
 }
 
 .auth-text {
