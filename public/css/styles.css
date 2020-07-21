@@ -89,7 +89,7 @@ a:hover {
 }
 
 .card-top {
-  height: 225.766px;
+  /* height: 225.766px; */
   background-color: #EFEFEF;
   display: flex;
   align-items: center;
@@ -132,6 +132,7 @@ span:hover {
   position: absolute;
   bottom: 5px;
   right: 24px;
+  font-size: 12px;
 }
 
 /* Compose */
