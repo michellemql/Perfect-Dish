@@ -96,7 +96,9 @@
       <h3 class="recipe-heading">Directions</h3>
       <ol>
         <%for(let i = 0; i < instructions.length; i++){%>
-      <li class="instructions"><%=instructions[i]%></li>
+          <%if(instructions[i] != null && instructions[i].length != 0){%>
+            <li class="instructions"><%=instructions[i]%></li>
+          <%}%>
       <%}%>
       </ol>
   </div>
