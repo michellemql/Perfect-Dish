@@ -67,16 +67,18 @@ a:hover {
   border-radius: 6px;
   /* box-shadow: 1px 1px 3px 0 #EEEEEE; */
   box-shadow: 3px 3px 3px 0 #EEEEEE;
-  /* padding: 12px; */
-  padding: 0;
-  margin: 12.7px;
+  padding: 11px;
+  /* padding: 0; */
+  /* margin: 12.7px; */
+  margin: 9px;
   margin-bottom: 20px;
   /* max-width: 22.4%; */
   /* max-width: 23.4%; */
   /* max-width: 22.8%; */
   /* max-width: 21%; */
-  max-width: 22.7%;
-  height: 382.719px;
+  /* max-width: 22.7%; */
+  /* height: 382.719px;  */
+  height: 390px;
   background-color: #fff;
 }
 
@@ -99,7 +101,8 @@ a:hover {
 }
 
 .home-card-body {
-  padding: 20px 12px 0;
+  /* padding: 20px 12px 0; */
+  padding-top: 20px;
   /* padding-top: 15px; */
 }
 
