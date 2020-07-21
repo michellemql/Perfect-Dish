@@ -89,7 +89,7 @@ a:hover {
 }
 
 .card-top {
-  /* height: 225.766px; */
+  height: 224.969px;
   background-color: #EFEFEF;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@ a:hover {
 .home-card-title {
   color: #4d4d4d;
   /* color: #5e5e5e; */
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   width: auto;
   font-family: Georgia, Times, serif;
   font-family: 'Libre Franklin', sans-serif;
@@ -174,7 +174,7 @@ label {
 }
 
 .recipe-mid {
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 20px;
 }
 
@@ -185,11 +185,15 @@ label {
 
 .recipe-left {
   padding-left: 0;
-  margin-right: 100px;
+  margin-left: 65px
+  margin-right: 60px;
+
 }
 
 .recipe-image {
-  width: 90%;
+  width: 85%;
+  padding-left: 0;
+  border-radius: 5px;
 }
 
 .time-block {

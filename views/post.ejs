@@ -84,7 +84,9 @@
     <h3 class="recipe-heading">Ingredients: </h3>
     <ul>
       <%for(let i = 0; i < ingredients.length; i++){%>
-      <li class="ingredients"><%=ingredients[i]%></li>
+        <%if(ingredients[i] != null && ingredients[i].length != 0){%>
+          <li class="ingredients"><%=ingredients[i]%></li>
+        <%}%>
       <%}%>
       </ul>
 
