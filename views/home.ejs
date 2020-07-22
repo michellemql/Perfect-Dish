@@ -23,7 +23,7 @@
         <a href="/posts/<%=user._id%>/<%= imgName %>">
           <span class="card-title home-card-title"><%=user.recipes[i].title%></span>
         </a>
-        <p class="card-text home-card-text"><%=user.recipes[i].introduction.length < 60 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 60) + "..."%></p>
+        <p class="card-text home-card-text"><%=user.recipes[i].introduction.length < 65 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 65) + "..."%></p>
         <div class="bottom">
           <%if(user.recipes[i].totalTimeHour === null){%>
             <p><%=user.recipes[i].totalTimeMin%> Mins</p>
