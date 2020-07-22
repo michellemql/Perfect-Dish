@@ -20,18 +20,15 @@ a:hover {
 }
 
 .container-fluid {
-  /* padding-top: 70px; */
   padding-bottom: 70px;
 }
 
 .container-recipe {
   background-color: #fff;
-  /* border: 1px solid #dbdbdb; */
   border-radius: 10px;
   width: 90%;
   margin: 15px auto 0;
   padding: 30px 120px;
-  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-family: 'Libre Franklin', sans-serif;
 }
 
@@ -197,9 +194,8 @@ label {
 }
 
 .time-block {
-  /* font-family: 'Libre Franklin', sans-serif; */
   border: 1px solid #7f7f7f;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 20px 15px 20px;
   margin-top: 30px;
   max-width: 23%;
@@ -221,13 +217,11 @@ h4 {
 
 .ingredients {
   font-size: 16px;
-  /* font-family: 'Libre Franklin', sans-serif; */
   padding-bottom: 8px;
 }
 
 .instructions {
   font-size: 16px;
-  /* font-family: 'Libre Franklin', sans-serif; */
   padding-bottom: 10px;
   line-height: 1.6;
   text-align: justify;
@@ -245,16 +239,16 @@ h4 {
 
 .auth-title {
   margin-top: 10px;
-  margin-bottom: 20px; /*15px*/
+  margin-bottom: 20px;
   font-family: 'Libre Franklin', sans-serif;
 }
 
 .form {
-  margin-bottom: 30px; /*25px*/
+  margin-bottom: 30px;
 }
 
 .form-group {
-  margin-bottom: 20px; /*15px*/
+  margin-bottom: 20px;
 }
 
 .submit {
@@ -262,7 +256,7 @@ h4 {
 }
 
 .right {
-  padding-top: 59px; /*54px*/
+  padding-top: 59px;
   margin-top: 30px;
 }
 
@@ -272,13 +266,11 @@ h4 {
 }
 
 #oauth-divider {
-  margin-top: 25px; /*24*/
-  /* margin-bottom: 18px; */
+  margin-top: 25px;
 }
 
 .auth-text {
   text-align: center;
-  /* margin-bottom: 5px; */
   margin-bottom: 0;
 }
 
