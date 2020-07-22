@@ -133,6 +133,10 @@ span:hover {
   font-size: 12px;
 }
 
+.bottom {
+  color: grey;
+}
+
 /* Compose */
 label {
   color: #4d4d4d;
