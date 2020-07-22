@@ -134,7 +134,10 @@ span:hover {
 }
 
 .bottom {
-  color: grey;
+  color: #7f7f7f;
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
 }
 
 /* Compose */
@@ -202,8 +205,6 @@ label {
   border-radius: 5px;
   padding: 20px 15px 20px;
   margin-top: 30px;
-  max-width: 23%;
-  padding-right: 0;
 }
 
 .expand {
