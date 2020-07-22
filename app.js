@@ -215,7 +215,7 @@ app.get("/", function(req, res) {
         });
       });
     }
-  }).sort({$natural:-1});
+  });
 });
 
 
