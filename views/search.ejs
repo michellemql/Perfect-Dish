@@ -2,6 +2,7 @@
 
 <div class="container-home">
   <div class="row">
+  <p><%=matchRecipeTitle%></p>  
     <% users.forEach(function(user){ %>
     <% for(let i = 0; i < user.recipes.length; i++){ %>
     <% if(user.recipes[i].title.includes(matchRecipeTitle)){ %>

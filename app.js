@@ -220,6 +220,23 @@ app.get("/", function(req, res) {
 });
 
 
+// @route POST /search
+// @desc  Search recipes
+app.post("/search", function(req, res) {
+  const searchContent = _.upperFirst(req.body.searchContent);
+  User.find({'recipes.title': {"$regex": searchContent}}, function(err, matchUsers) {
+    if(err){
+      console.log(err);
+    } else {
+      res.render("search", {
+        users: matchUsers,
+        matchRecipeTitle: searchContent
+      });
+    }
+  });
+});
+
+
 // @route GET /compose
 // @desc  Create a recipe
 app.get("/compose", function(req, res) {
@@ -362,22 +379,6 @@ app.get("/image/:filename", function(req, res) {
   });
 });
 
-
-// @route POST /search
-// @desc  Search recipes
-app.post("/search", function(req, res) {
-  const searchContent = _.upperFirst(req.body.searchContent);
-  User.find({'recipes.title': {"$regex": searchContent}}, function(err, matchUsers) {
-    if(err){
-      console.log(err);
-    } else {
-      res.render("search", {
-        users: matchUsers,
-        matchRecipeTitle: searchContent
-      });
-    }
-  });
-});
 
 
 const port = process.env.PORT || 3000;
