@@ -19,6 +19,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const _ = require("lodash");
 
 const app = express();
 
@@ -263,6 +264,23 @@ app.post("/compose", upload.single('file'), function(req, res) {
   });
 });
 
+// @route POST /search
+// @desc  Search recipes
+app.post("/search", function(req, res) {
+  const searchContent = _.lowerCase(req.body.searchContent);
+  User.find({recipes: {title: /searchContent/}}, function(err, matchUsers) {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(matchUsers);
+      // gfs.files.find().toArray(function(err, files){
+      //   res.render("home", {
+      //     users: matchUsers
+      //   });
+      // });
+    }
+  })
+})
 
 // @route POST /register
 // @desc  User register
@@ -344,6 +362,22 @@ app.get("/image/:filename", function(req, res) {
   });
 });
 
+
+// @route POST /search
+// @desc  Search recipes
+app.post("/search", function(req, res) {
+  const searchContent = _.upperFirst(req.body.searchContent);
+  User.find({'recipes.title': {"$regex": searchContent}}, function(err, matchUsers) {
+    if(err){
+      console.log(err);
+    } else {
+      res.render("search", {
+        users: matchUsers,
+        matchRecipeTitle: searchContent
+      });
+    }
+  });
+});
 
 
 const port = process.env.PORT || 3000;

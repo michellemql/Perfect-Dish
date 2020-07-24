@@ -21,12 +21,18 @@
           <p class="navbar-brand">PERFECT DISH</p>
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li id="compose"><a href="/compose">CREATE A RECIPE</a></li>
-        <li id="login"><a href="/login">Login</a></li>
-        <li id="register"><a href="/register">Sign up</a></li>
-        <li id="logout"><a href="/logout">Logout</a></li>
-      </ul>
+      <div class="navbar-body nav navbar-nav navbar-right">
+        <form class="form-inline" action="/search" method="post" autocomplete="off">
+          <input class="form-control" name="searchContent" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="compose"><a href="/compose">CREATE A RECIPE</a></li>
+          <li id="login"><a href="/login">Login</a></li>
+          <li id="register"><a href="/register">Sign up</a></li>
+          <!-- <li id="logout"><a href="/logout">Logout</a></li> -->
+        </ul>
+      </div>
     </div>
   </nav>
 

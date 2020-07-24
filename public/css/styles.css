@@ -57,6 +57,16 @@ a:hover {
   color: #1abc9c !important;
 }
 
+.form-inline {
+  display: inline;
+  position: relative;
+  top: 12px;
+}
+
+.btn-search {
+  color: #5e5e5e;
+}
+
 /* Home */
 .home-col {
   /* border: 1px solid #dbdbdb; */
