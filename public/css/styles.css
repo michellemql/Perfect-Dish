@@ -13,6 +13,10 @@ a:hover {
   text-decoration: none;
 }
 
+hr {
+  color: #5e5e5e;
+}
+
 /* Container */
 .container-home {
   width: 95%;
@@ -115,10 +119,10 @@ a:hover {
   /* padding-top: 15px; */
 }
 
-.home-card-title {
+.card-title {
   color: #4d4d4d;
   /* color: #5e5e5e; */
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   width: auto;
   font-family: Georgia, Times, serif;
   font-family: 'Libre Franklin', sans-serif;
@@ -128,7 +132,7 @@ span:hover {
   color: #e1c258 !important;
 }
 
-.home-card-text {
+.card-text {
   /* color: #999999; */
   color: #7f7f7f;
   margin-top: 8px;
@@ -157,11 +161,6 @@ label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
-}
-
-.divider {
-  color: #fff;
-  border-top: 1px solid #fff;
 }
 
 .add-fields {
@@ -242,6 +241,35 @@ h4 {
   line-height: 1.6;
   text-align: justify;
 }
+
+/* Profile */
+.profile-top>h1 {
+  margin-bottom: 50px;
+}
+
+.profile-top>h2 {
+  font-size: 2.4rem;
+}
+
+.profile-top>hr {
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.profile-card {
+  height: 310px;
+  border: 1px solid #efefef;
+}
+
+.profile-card-body {
+  padding: 20px 12px 0;
+}
+
+.profile-divider>hr {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
 
 /* Login/Register */
 .container-login {

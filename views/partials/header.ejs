@@ -11,6 +11,10 @@
   <link rel="icon" href="images/dish.png">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="css/bootstrap-social.css">
   <link rel="stylesheet" href="/css/styles.css">
@@ -26,13 +30,21 @@
           <input class="form-control" name="searchContent" type="search" placeholder="Find a recipe" aria-label="Search">
           <button class="btn btn-search" type="submit"><i class="fas fa-search"></i></button>
         </form>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="compose"><a href="/compose">CREATE A RECIPE</a></li>
-          <li id="login"><a href="/login">Login</a></li>
-          <li id="register"><a href="/register">Sign up</a></li>
-          <!-- <li id="logout"><a href="/logout">Logout</a></li> -->
+        <ul class="nav navbar-nav navbar-right mr-auto">
+          <li id="compose" class="nav-item"><a href="/compose">CREATE A RECIPE</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle fa-lg"></i><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/login">Log in</a></li>
+              <li><a href="/register">Sign up</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
         </ul>
-        <a href="/profile"><i class="fas fa-user-circle fa-lg"></i></a>
 
       </div>
     </div>
