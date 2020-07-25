@@ -300,7 +300,7 @@ app.post("/search", function(req, res) {
 })
 
 
-app.get("profile", function(req, res) {
+app.get("/profile", function(req, res) {
   if (req.isAuthenticated()) {
     res.render("profile", {user: req.user});
   } else {
