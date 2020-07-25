@@ -270,6 +270,17 @@ h4 {
   margin-bottom: 32px;
 }
 
+.delete {
+  position:absolute;
+  bottom: 7px;
+  right: 26px;
+  color: red;
+}
+
+.delete:hover {
+  color: #e1c258;
+}
+
 
 /* Login/Register */
 .container-login {

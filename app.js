@@ -309,6 +309,31 @@ app.get("/profile", function(req, res) {
 });
 
 
+
+app.get("/delete/:userId/:recipeId", function(req, res){
+  const requestedUserId = req.params.userId;
+  const requestedRecipeId = req.params.recipeId;
+
+  User.findOne({_id: requestedUserId}, function(err, foundUser){
+    // var currentRecipe = user.recipes[requestedRecipeIndex];
+    // console.log("current recipe is" + currentRecipe);
+    // user.recipes.remove({_id: requestedRecipeId});
+    if(err){
+      console.log(err);
+    } else {
+      if(foundUser){
+        foundUser.recipes.remove({_id: requestedRecipeId});
+        foundUser.save(function(err) {
+          if (!err) {
+            res.redirect("/profile");
+          }
+        });
+      }
+    }
+  });
+});
+
+
 // @route POST /register
 // @desc  User register
 app.post("/register", function(req, res) {

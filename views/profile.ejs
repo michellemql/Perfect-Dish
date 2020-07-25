@@ -25,7 +25,8 @@
             <a href="/posts/<%=user._id%>/<%= imgName %>">
               <span class="card-title"><%=user.recipes[i].title%></span>
             </a>
-            <p class="card-text"><%=user.recipes[i].introduction.length < 65 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 65) + "..."%></p>
+            <p class="card-text"><%=user.recipes[i].introduction.length < 50 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 50) + "..."%></p>
+            <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>" class="delete">Delete</a>
           </div>
         </div>
       </div>
