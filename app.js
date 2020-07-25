@@ -299,6 +299,16 @@ app.post("/search", function(req, res) {
   })
 })
 
+
+app.get("profile", function(req, res) {
+  if (req.isAuthenticated()) {
+    console.log(req);
+    // res.render("profile", {user: req});
+  } else {
+    res.redirect("/login");
+  }
+});
+
 // @route POST /register
 // @desc  User register
 app.post("/register", function(req, res) {
