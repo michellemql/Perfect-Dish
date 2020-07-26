@@ -2,9 +2,7 @@
 
 <div class="container-recipe">
   <div class="profile-top">
-    <%var userId = user._id;%>
-    <%var currentUserId = currentUser._id;%>
-    <%if(userId == currentUserId){%>
+    <%if(currentUser != null && user == currentUser){%>
       <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
       <h2>Your Recipes</h2>
     <%} else {%>
