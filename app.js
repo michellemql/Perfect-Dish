@@ -308,7 +308,7 @@ app.get("/profile", function(req, res) {
   }
 });
 
-app.get("/profile/:userId", function(req, res){
+app.get("/user/:userId", function(req, res){
   const requestedUserId = req.params.userId;
 
   User.findOne({_id: requestedUserId}, function(err, foundUser){
