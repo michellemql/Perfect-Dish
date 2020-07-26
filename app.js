@@ -316,7 +316,7 @@ app.get("/profile/:userId", function(req, res){
       console.log(err);
     } else {
       if(foundUser){
-        res.render("profile", {user: foundUser, currentUser: req.user});
+        res.render("profile", {user: foundUser, currentUser: foundUser});
       }
     }
   });
