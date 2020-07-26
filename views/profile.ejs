@@ -1,7 +1,8 @@
 <%- include("partials/header"); -%>
 
 <div class="container-recipe">
-
+  <p>user id : <%=user._id%></p>
+  <p>current user id : <%=currentUser._id%></p>
   <div class="profile-top">
     <%if(user._id === currentUser._id){%>
       <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
