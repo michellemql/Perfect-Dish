@@ -3,8 +3,13 @@
 <div class="container-recipe">
 
   <div class="profile-top">
-    <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
-    <h2>Your Recipes</h2>
+    <%if(user._id === currentUser._id){%>
+      <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
+      <h2>Your Recipes</h2>
+    <%} else {%>
+      <h1 class="recipe-heading profile-heading"><%=user.username%></h1>
+      <h2><%=user.username%>'s Recipes</h2>
+    <%}%>
     <hr class="divider">
   </div>
 
@@ -26,7 +31,9 @@
               <span class="card-title"><%=user.recipes[i].title%></span>
             </a>
             <p class="card-text"><%=user.recipes[i].introduction.length < 50 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 50) + "..."%></p>
-            <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>" class="delete">Delete</a>
+            <%if(user._id === currentUser._id){%>
+              <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>" class="delete">Delete</a>
+            <%}%>
           </div>
         </div>
       </div>

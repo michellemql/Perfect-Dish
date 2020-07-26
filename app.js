@@ -302,13 +302,26 @@ app.post("/search", function(req, res) {
 
 app.get("/profile", function(req, res) {
   if (req.isAuthenticated()) {
-    res.render("profile", {user: req.user});
+    res.render("profile", {user: req.user, currentUser: req.user});
   } else {
     res.redirect("/login");
   }
 });
 
+app.get("/profile/:userId", function(req, res){
+  const requestedUserId = req.params.userId;
 
+  User.findOne({_id: requestedUserId}, function(err, foundUser){
+    if(err){
+      console.log(err);
+    } else {
+      if(foundUser){
+        res.render("profile", {user: foundUser, currentUser: req.user});
+      }
+    }
+  });
+
+});
 
 app.get("/delete/:userId/:recipeId", function(req, res){
   const requestedUserId = req.params.userId;
