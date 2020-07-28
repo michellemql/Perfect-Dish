@@ -1,4 +1,4 @@
-<%- include("partials/header",{currentUser: currentUser}); -%>
+<%- include("partials/header"); -%>
 
 <div class="container-recipe">
 
@@ -7,6 +7,7 @@
   </div>
   <div class="row recipe-intro">
     <p><%=introduction%></p>
+    <a href="#">--By <%=username%></a>
     <a href="#" class="author">  -- By <%=username%></a>
   </div>
 
