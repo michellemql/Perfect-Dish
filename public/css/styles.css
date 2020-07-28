@@ -132,8 +132,10 @@ hr {
 }
 
 .card-top {
-  height: 224.969px;
-  width: 247.766px;
+  /* height: 224.969px;
+  width: 247.766px; */
+  height: auto;
+  width: auto;
   background-color: #EFEFEF;
   background-color: #fcf8e8;
   display: flex;
