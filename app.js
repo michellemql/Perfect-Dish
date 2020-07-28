@@ -342,6 +342,7 @@ app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
       ingredients: currentRecipe.ingredients,
       instructions: currentRecipe.instructions,
       image: imgName,
+      user: user,
       currentUser: req.user
     });
   });
