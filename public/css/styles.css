@@ -48,6 +48,12 @@ hr {
   background-color: #ecdfc8;
 }
 
+.navbar-body {
+  position: relative;
+  right: -40px;
+  color: #5e5e5e;
+}
+
 .navbar-brand {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -59,6 +65,14 @@ hr {
 
 .navbar-nav li a:hover {
   color: #1abc9c !important;
+}
+
+.nav-item {
+  padding: 15px;
+}
+
+.nav-item a {
+  padding-top: 0;
 }
 
 .dropdown-menu {
