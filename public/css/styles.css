@@ -171,7 +171,7 @@ hr {
 .author {
   position: absolute;
   bottom: 5px;
-  right: 24px;
+  right: 11px;
   font-size: 12px;
   color: #7f7f7f;
 }
@@ -185,6 +185,7 @@ hr {
   position: absolute;
   bottom: 5px;
   font-size: 12px;
+  margin-bottom: 0;
 }
 
 /* Compose */
@@ -218,6 +219,10 @@ label {
   font-size: 1.7rem;
   line-height: 1.7;
   text-align: justify;
+}
+.recipe-intro>a{
+  color: #7f7f7f;
+  font-size: 1.5rem;
 }
 
 .recipe-mid {
