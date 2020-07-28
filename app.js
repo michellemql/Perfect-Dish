@@ -329,6 +329,7 @@ app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
     var currentRecipe = user.recipes[requestedRecipeIndex];
     var imgName = currentRecipe.image.get('filename');
     res.render("post", {
+      userId: req.params.userId,
       username: user.username,
       title: currentRecipe.title,
       serving: currentRecipe.serving,
@@ -342,7 +343,6 @@ app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
       ingredients: currentRecipe.ingredients,
       instructions: currentRecipe.instructions,
       image: imgName,
-      userId: requestedUserId,
       currentUser: req.user
     });
   });
