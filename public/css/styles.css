@@ -94,6 +94,10 @@ hr {
   color: #5e5e5e;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 /* Home */
 .home-col {
   /* border: 1px solid #dbdbdb; */
@@ -151,7 +155,7 @@ hr {
   font-family: 'Libre Franklin', sans-serif;
 }
 
-span:hover {
+.card-title:hover {
   color: #e1c258 !important;
 }
 
@@ -169,6 +173,11 @@ span:hover {
   bottom: 5px;
   right: 24px;
   font-size: 12px;
+  color: #7f7f7f;
+}
+
+.author:hover {
+  color: #e1c258;
 }
 
 .bottom {
