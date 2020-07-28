@@ -110,7 +110,7 @@ hr {
   border-radius: 6px;
   /* box-shadow: 1px 1px 3px 0 #EEEEEE; */
   box-shadow: 3px 3px 3px 0 #EEEEEE;
-  /* padding: 11px; */
+  padding: 11px;
   /* padding: 0; */
   /* margin: 12.7px; */
   margin: 9px;
@@ -145,17 +145,17 @@ hr {
 .card-top>a>img {
   width: 100%;
   border-radius: 3px;
-  /* height: 224.969px; */
+  height: 224.969px;
   /* height: 241.656px; */
-  height: 244.94px;
+  /* height: 244.94px; */
 }
 
 .home-card-body {
   /* padding: 20px 12px 0; */
   padding-top: 20px;
   /* padding-top: 15px; */
-  padding-left: 11px;
-  padding-right: 11px;
+  /* padding-left: 11px;
+  padding-right: 11px; */
 }
 
 .card-title {
@@ -314,10 +314,6 @@ h4 {
 .profile-card {
   height: 310px;
   border: 1px solid #efefef;
-}
-
-.profile-card-top {
-  width: 172px;
 }
 
 .profile-card-top>img {
