@@ -220,9 +220,14 @@ label {
   line-height: 1.7;
   text-align: justify;
 }
+
 .recipe-intro>a{
   color: #7f7f7f;
   font-size: 1.5rem;
+}
+
+.recipe-intro>a :hover {
+  color: #e1c258;
 }
 
 .recipe-mid {
