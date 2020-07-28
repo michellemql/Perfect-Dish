@@ -54,6 +54,11 @@ hr {
   color: #5e5e5e;
 }
 
+.navbar-body>ul {
+  position: relative;
+  margin-left: 20px;
+}
+
 .navbar-brand {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -138,6 +143,7 @@ hr {
 .card-top>a>img {
   width: 100%;
   border-radius: 3px;
+  height: 224.969px;
 }
 
 .home-card-body {
@@ -208,6 +214,7 @@ label {
 /* Recipe */
 .recipe-heading {
   font-family: Georgia, Times, serif;
+  margin-bottom: 20px;
 }
 
 .recipe-intro {
@@ -226,7 +233,7 @@ label {
   font-size: 1.5rem;
 }
 
-.recipe-intro>a :hover {
+.recipe-intro>a:hover {
   color: #e1c258;
 }
 
@@ -301,6 +308,10 @@ h4 {
 .profile-card {
   height: 310px;
   border: 1px solid #efefef;
+}
+
+.profile-card-top>img {
+  width: 100%;
 }
 
 .profile-card-body {
