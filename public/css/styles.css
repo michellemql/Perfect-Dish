@@ -61,6 +61,15 @@ hr {
   color: #1abc9c !important;
 }
 
+.dropdown-menu {
+  letter-spacing: 2px;
+  min-width: 120px;
+}
+
+.dropdown-menu>li>a {
+  color: #5e5e5e;
+}
+
 .form-inline {
   display: inline;
   position: relative;
