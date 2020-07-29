@@ -320,7 +320,7 @@ h4 {
   width: 172px;
 }
 
-.profile-card-top>img {
+.profile-card-top>a>img {
   width: 100%;
 }
 
