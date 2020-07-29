@@ -240,8 +240,9 @@ app.post("/compose", upload.single('file'), function(req, res) {
       console.log(err);
     } else {
       if (foundUser) {
+        var recipeTitle = _.startCase(_.camelCase(req.body.recipeTitle));
         foundUser.recipes.push({
-          title: req.body.recipeTitle,
+          title: recipeTitle,
           serving: req.body.servingNumber,
           prepareTimeHour: req.body.prepareTimeHour,
           prepareTimeMin: req.body.prepareTimeMin,
