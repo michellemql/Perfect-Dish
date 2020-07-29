@@ -217,6 +217,10 @@ label {
   right: 85px;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 /* Recipe */
 .recipe-heading {
   font-family: Georgia, Times, serif;
