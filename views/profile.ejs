@@ -1,50 +1,50 @@
 <%- include("partials/header", {currentUser: currentUser}); -%>
 
+
 <div class="container-recipe">
   <div class="profile-top">
     <%if(currentUser != null && user == currentUser){%>
-      <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
-      <h2>Your Recipes</h2>
+    <h1 class="recipe-heading profile-heading">Hello <%=user.username%></h1>
+    <h2>Your Recipes</h2>
     <%} else {%>
-      <h1 class="recipe-heading profile-heading"><%=user.username%></h1>
-      <h2><%=user.username%>'s Recipes</h2>
+    <h1 class="recipe-heading profile-heading"><%=user.username%></h1>
+    <h2><%=user.username%>'s Recipes</h2>
     <%}%>
     <hr class="divider">
   </div>
 
   <div class="row">
     <%for(let i = 0; i < user.recipes.length; i++){%>
-      <%var recipeIndex=i; %>
-      <%var imgName=user.recipes[i].image.get('originalname');%>
-      <%var imgFileName=user.recipes[i].image.get('filename');%>
-
-      <div class="col-md-3">
-        <div class="card home-card profile-card">
-          <div class="profile-card-top">
-            <a href="/posts/<%=user._id%>/<%= recipeIndex %>/<%= imgName %>">
-              <img src="/image/<%= imgFileName %>" alt="recipe-image">
-            </a>
-          </div>
-          <div class="card-body profile-card-body">
-            <a href="/posts/<%=user._id%>/<%= imgName %>">
-              <span class="card-title"><%=user.recipes[i].title%></span>
-            </a>
-            <p class="card-text"><%=user.recipes[i].introduction.length < 40 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 40) + "..."%></p>
-            <%if(currentUser != null && user == currentUser){%>
-              <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>" class="delete">Delete</a>
-            <%}%>
+    <%var recipeIndex=i; %>
+    <%var imgName=user.recipes[i].image.get('originalname');%>
+    <%var imgFileName=user.recipes[i].image.get('filename');%>
+    <div class="col-md-3">
+      <div class="card home-card profile-card">
+        <div class="profile-card-top">
+          <a href="/posts/<%=user._id%>/<%= recipeIndex %>/<%= imgName %>">
+            <img src="/image/<%= imgFileName %>" alt="recipe-image">
+          </a>
+        </div>
+        <div class="card-body profile-card-body">
+          <a href="/posts/<%=user._id%>/<%= imgName %>">
+            <span class="card-title"><%=user.recipes[i].title%></span>
+          </a>
+          <p class="card-text"><%=user.recipes[i].introduction.length < 40 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 40) + "..."%></p>
+          <%if(currentUser != null && user == currentUser){%>
+          <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>" class="delete">Delete</a>
+          <%}%>
           </div>
         </div>
       </div>
-
-      <% if(i != 0 && ((i + 1) % 4 === 0)){ %>
-        <div class="profile-divider">
-          <p style="visibility : hidden;">Divider</p>
-          <hr>
-        </div>
-      <% } %>
-    <%}%>
+      <%if(i != 0 && ((i + 1) % 4 === 0)){%>
+      <div class="profile-divider">
+        <p style="visibility : hidden;">Divider</p>
+        <hr>
+      </div>
+      <%}%>
+      <%}%>
   </div>
 </div>
+
 
 <%- include("partials/footer"); -%>

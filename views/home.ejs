@@ -1,10 +1,9 @@
 <%- include("partials/header"); -%>
 
 
-
 <div class="row">
   <%if(users === null){%>
-    <p>Welcome</p>
+  <p>Welcome</p>
   <%} else {%>
   <% users.forEach(function(user){ %>
   <% for(let i = 0; i < user.recipes.length; i++){ %>
@@ -25,32 +24,28 @@
         </a>
         <p class="card-text home-card-text"><%=user.recipes[i].introduction.length < 65 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 65) + "..."%></p>
         <%if(user.recipes[i].totalTimeHour === null){%>
-          <p class="bottom"><%=user.recipes[i].totalTimeMin%> Mins</p>
+        <p class="bottom"><%=user.recipes[i].totalTimeMin%> Mins</p>
         <%} else if(user.recipes[i].totalTimeMin === null){%>
-          <%if(user.recipes[i].totalTimeHour <= 1){%>
-            <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hour</p>
-          <%} else {%>
-            <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hours</p>
-          <%}%>
+        <%if(user.recipes[i].totalTimeHour <= 1){%>
+        <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hour</p>
+        <%} else {%>
+        <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hours</p>
+        <%}%>
         <%} else if(user.recipes[i].totalTimeHour != null && user.recipes[i].totalTimeMin != null){%>
-          <%if(user.recipes[i].totalTimeHour <= 1){%>
-            <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hour and <%=user.recipes[i].totalTimeMin%> Mins</p>
-          <%} else {%>
-            <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hours and <%=user.recipes[i].totalTimeMin%> Mins</p>
-          <%}%>
+        <%if(user.recipes[i].totalTimeHour <= 1){%>
+        <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hour and <%=user.recipes[i].totalTimeMin%> Mins</p>
+        <%} else {%>
+        <p class="bottom"><%=user.recipes[i].totalTimeHour%> Hours and <%=user.recipes[i].totalTimeMin%> Mins</p>
+        <%}%>
         <%}%>
         <a href="/user/<%=user._id%>" class="author">By <%=user.username%></a>
-
       </div>
-
     </div>
   </div>
   <%}%>
   <%})%>
-
   <%}%>
 </div>
-
 
 
 <%- include("partials/footer"); -%>

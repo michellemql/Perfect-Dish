@@ -1,7 +1,6 @@
 <%- include("partials/header"); -%>
 
 <div class="container-recipe">
-
   <div class="row">
     <h1 class="recipe-heading"><%=title%></h1>
   </div>
@@ -9,7 +8,6 @@
     <p><%=introduction%></p>
     <a href="/user/<%=userId%>">--By <%=username%></a>
   </div>
-
   <div class="row recipe-mid">
     <div class="col-md-6 recipe-left">
       <img class="recipe-image" src="/image/<%= image %>" alt="">
@@ -23,11 +21,11 @@
           <% if(prepareTimeHour === null){ %>
           <h4 class="bold"><%=prepareTimeMin%> mins</h4>
           <%} else if(prepareTimeMin === null){ %>
-            <% if(prepareTimeHour <= 1){ %>
-              <h4 class="bold"><%=prepareTimeHour%> hr</h4>
-            <% } else { %>
-              <h4 class="bold"><%=prepareTimeHour%> hrs</h4>
-            <% } %>
+          <% if(prepareTimeHour <= 1){ %>
+          <h4 class="bold"><%=prepareTimeHour%> hr</h4>
+          <% } else { %>
+          <h4 class="bold"><%=prepareTimeHour%> hrs</h4>
+          <% } %>
           <%} else if(prepareTimeHour != null && prepareTimeMin != null){ %>
           <h4 class="bold"><%=prepareTimeHour%> hrs <%=prepareTimeMin%> mins</h4>
           <%}%>
@@ -41,13 +39,13 @@
           <% if(cookTimeHour === null){ %>
           <h4 class="bold"><%=cookTimeMin%> mins</h4>
           <%} else if(cookTimeMin === null){%>
-            <%if(cookTimeHour <= 1){%>
-              <h4 class="bold"><%=cookTimeHour%> hr</h4>
-            <%} else {%>
-              <h4 class="bold"><%=cookTimeHour%> hrs</h4>
-            <%}%>
+          <%if(cookTimeHour <= 1){%>
+          <h4 class="bold"><%=cookTimeHour%> hr</h4>
+          <%} else {%>
+          <h4 class="bold"><%=cookTimeHour%> hrs</h4>
+          <%}%>
           <%} else if(cookTimeHour != null && cookTimeMin != null){%>
-          <h4 class="bold"><%=cookTimeHour%> hrs    <%=cookTimeMin%> mins</h4>
+          <h4 class="bold"><%=cookTimeHour%> hrs <%=cookTimeMin%> mins</h4>
           <%}%>
         </div>
       </div>
@@ -59,11 +57,11 @@
           <%if(totalTimeHour === null){%>
           <h4 class="bold"><%=totalTimeMin%> mins</h4>
           <%} else if(totalTimeMin === null){%>
-            <%if(totalTimeHour <= 1){%>
-              <h4 class="bold"><%=totalTimeHour%> hr</h4>
-            <%} else {%>
-              <h4 class="bold"><%=totalTimeHour%> hrs</h4>
-            <%}%>
+          <%if(totalTimeHour <= 1){%>
+          <h4 class="bold"><%=totalTimeHour%> hr</h4>
+          <%} else {%>
+          <h4 class="bold"><%=totalTimeHour%> hrs</h4>
+          <%}%>
           <%} else if(totalTimeHour != null && totalTimeMin != null){%>
           <h4 class="bold"><%=totalTimeHour%> hrs <%=totalTimeMin%> mins</h4>
           <%}%>
@@ -77,35 +75,29 @@
             <h4 class="bold"><%=serving%></h4>
         </div>
       </div>
-
     </div>
-
   </div>
   <div class="row recipe-bottom">
     <h3 class="recipe-heading">Ingredients: </h3>
     <ul>
       <%for(let i = 0; i < ingredients.length; i++){%>
-        <%if(ingredients[i] != null && ingredients[i].length != 0){%>
-          <li class="ingredients"><%=ingredients[i]%></li>
-        <%}%>
+      <%if(ingredients[i] != null && ingredients[i].length != 0){%>
+      <li class="ingredients"><%=ingredients[i]%></li>
       <%}%>
-      </ul>
-
+      <%}%>
+    </ul>
   </div>
-
   <div class="row recipe-bottom">
-      <h3 class="recipe-heading">Directions</h3>
-      <ol>
-        <%for(let i = 0; i < instructions.length; i++){%>
-          <%if(instructions[i] != null && instructions[i].length != 0){%>
-            <li class="instructions"><%=instructions[i]%></li>
-          <%}%>
+    <h3 class="recipe-heading">Directions</h3>
+    <ol>
+      <%for(let i = 0; i < instructions.length; i++){%>
+      <%if(instructions[i] != null && instructions[i].length != 0){%>
+      <li class="instructions"><%=instructions[i]%></li>
       <%}%>
-      </ol>
+      <%}%>
+    </ol>
   </div>
 </div>
-
-
 
 
 <%- include("partials/footer"); -%>

@@ -5,19 +5,22 @@
   <meta charset="utf-8">
   <title>Perfect Dish</title>
   <meta charset="utf-8">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet"> -->
+  <!-- web logo -->
   <link rel="icon" href="images/dishone.png">
+  <!-- google font -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+  <!-- fontawesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- bootstrap social button  -->
   <link rel="stylesheet" href="css/bootstrap-social.css">
+  <!-- styles.css -->
   <link rel="stylesheet" href="/css/styles.css">
+
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -38,20 +41,16 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="/profile">Account</a></li>
-              <!-- <li><a href="/login">Log in</a></li>
-              <li><a href="/register">Sign up</a></li> -->
               <li role="separator" class="divider"></li>
               <li><a href="/logout">Sign Out</a></li>
             </ul>
           </li>
           <%if(currentUser != null){%>
             <li class="nav-item">Hello, <%=currentUser.username%></li>
-          <%} else {%>
+          <%}else{%>
             <li><a href="/login" class="nav-item">Welcome, <span class="underline">Sign In</span></a></li>
           <%}%>
-
         </ul>
-
       </div>
     </div>
   </nav>

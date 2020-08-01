@@ -105,22 +105,13 @@ hr {
 
 /* Home */
 .home-col {
-  /* border: 1px solid #dbdbdb; */
   border: 2px solid #fff;
   border-radius: 6px;
-  /* box-shadow: 1px 1px 3px 0 #EEEEEE; */
   box-shadow: 3px 3px 3px 0 #EEEEEE;
   padding: 11px;
-  /* padding: 0; */
-  /* margin: 12.7px; */
   margin: 9px;
   margin-bottom: 20px;
-  /* max-width: 22.4%; */
   max-width: 23.4%;
-  /* max-width: 22.8%; */
-  /* max-width: 21%; */
-  /* max-width: 22.7%; */
-  /* height: 382.719px;  */
   height: 390px;
   background-color: #fff;
 }
@@ -132,8 +123,6 @@ hr {
 }
 
 .card-top {
-  /* height: 224.969px;
-  width: 247.766px; */
   height: auto;
   width: auto;
   background-color: #EFEFEF;
@@ -146,21 +135,14 @@ hr {
   width: 100%;
   border-radius: 3px;
   height: 224.969px;
-  /* height: 241.656px; */
-  /* height: 244.94px; */
 }
 
 .home-card-body {
-  /* padding: 20px 12px 0; */
   padding-top: 20px;
-  /* padding-top: 15px; */
-  /* padding-left: 11px;
-  padding-right: 11px; */
 }
 
 .card-title {
   color: #4d4d4d;
-  /* color: #5e5e5e; */
   font-size: 1.7rem;
   width: auto;
   font-family: Georgia, Times, serif;
@@ -172,7 +154,6 @@ hr {
 }
 
 .card-text {
-  /* color: #999999; */
   color: #7f7f7f;
   margin-top: 8px;
   font-size: 1.35rem;
@@ -229,9 +210,7 @@ label {
 
 .recipe-intro {
   padding-top: 0;
-  /* font-family: Georgia, Times, serif; */
   font-family: 'Libre Franklin', sans-serif;
-  /* font-style: italic; */
   color: #7f7f7f;
   font-size: 1.7rem;
   line-height: 1.7;
@@ -239,7 +218,7 @@ label {
 }
 
 .recipe-intro>a{
-  color: #7f7f7f;
+  color: #e1c258;
   font-size: 1.5rem;
 }
 
@@ -349,7 +328,7 @@ h4 {
 }
 
 
-/* Login/Register */
+/* Register/Login */
 .container-login {
   width: 55%;
   margin: auto;

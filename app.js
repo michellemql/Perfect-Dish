@@ -1,4 +1,5 @@
 //jshint esversion:6
+
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -10,7 +11,6 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-
 const md5 = require("md5");
 const session = require('express-session');
 const passport = require("passport");
@@ -21,13 +21,12 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const _ = require("lodash");
 
+
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(methodOverride('_method'));
@@ -42,10 +41,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// MongoDB URI ("mongodb://localhost:27017/blogDB")
+// MongoDB URI
 const conn = mongoose.createConnection("mongodb+srv://admin-mengqi:Test-123@cluster0-8rfhr.mongodb.net/blogDB?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
+
 mongoose.set("useCreateIndex", true);
 
 
@@ -89,6 +89,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
 // Passport Google OAuth
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -105,6 +106,7 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
+
 
 // Passport Facebook OAuth
 passport.use(new FacebookStrategy({
@@ -161,10 +163,12 @@ const upload = multer({
 app.get("/register", function(req, res) {
   res.render("register", {currentUser: req.user});
 });
+
 // @route GET /login
 app.get("/login", function(req, res) {
   res.render("login", {currentUser: req.user});
 });
+
 // @route GET /logout
 app.get("/logout", function(req, res) {
   req.logout();
@@ -198,7 +202,6 @@ app.get('/auth/facebook/perfectdish',
     failureRedirect: '/login'
   }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/');
   });
 
