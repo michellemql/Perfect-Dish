@@ -104,7 +104,7 @@ hr {
 }
 
 /* Home */
-.home-col {
+.home-row>col-md-3 {
   border: 2px solid #fff;
   border-radius: 6px;
   box-shadow: 3px 3px 3px 0 #EEEEEE;
