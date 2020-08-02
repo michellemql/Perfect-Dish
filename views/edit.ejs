@@ -1,0 +1,134 @@
+<%- include("partials/header"); -%>
+
+
+<p><%=recipe.title%></p>
+
+<script>
+function addFieldsIngredients(){
+  var extraFields = document.getElementById("extraFieldsIngredients");
+  var input = document.createElement("input");
+  input.type = "text";
+  input.className = "form-control add-fields";
+  input.name = "ingredients";
+  extraFieldsIngredients.appendChild(input);
+}
+function addFieldsDirections(){
+  var extraFields = document.getElementById("extraFieldsDirections");
+  var textarea = document.createElement("textarea");
+  textarea.className = "form-control add-fields";
+  textarea.name = "instructions";
+  extraFieldsDirections.appendChild(textarea);
+}
+</script>
+
+<div class="container-sm">
+<form class="" action="/edit/<%=user._id%>/<%=recipe._id%>" method="post" enctype="multipart/form-data" autocomplete="off">
+  <div class="row">
+    <div class="col-md-6 left block-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Recipe Name</label>
+            <input class="form-control" type="text" name="recipeTitle" value="<%=recipe.title%>" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="file">Recipe Photo</label>
+            <%var imgFileName=recipe.image.get('filename');%>
+            <img class="home-card-img" src="/image/<%= imgFileName %>" alt="recipe-image">
+            <input class="form-control" type="file" name="file" id="file">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Introduction</label>
+            <textarea class="form-control" name="introduction" rows="5" cols="10" required><%=recipe.introduction%></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Preparation Time</label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="prepareTimeHour" placeholder="hours" value="<%=recipe.prepareTimeHour%>">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="prepareTimeMin" placeholder="minutes" value="<%=recipe.prepareTimeMin%>">
+          </div>
+        </div>
+      </div>
+      <label>Cooking Time</label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="cookTimeHour" placeholder="hours" value="<%=recipe.cookTimeHour%>">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="cookTimeMin" placeholder="minutes" value="<%=recipe.cookTimeMin%>">
+          </div>
+        </div>
+      </div>
+      <label>Total Time</label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="totalTimeHour" placeholder="hours" value="<%=recipe.totalTimeHour%>">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" type="number" name="totalTimeMin" placeholder="minutes" value="<%=recipe.totalTimeMin%>">
+          </div>
+        </div>
+      </div>
+      <label>Number of Servings</label>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <input class="form-control" type="number" name="servingNumber" value="<%=recipe.serving%>" required>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="mt-5">Ingredients</label>
+        <%for(let i = 0; i < recipe.ingredients.length; i++){%>
+          <input class="form-control add-fields" type="text" name="ingredients" value="<%=recipe.ingredients[i]%>">
+        <%}%>
+        <div id="extraFieldsIngredients"></div>
+        <a href="#" onclick="addFieldsIngredients()">Add More Ingredients</a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Cooking Directions</label>
+        <%for(let i = 0; i < recipe.instructions.length; i++){%>
+          <textarea class="form-control add-fields" name="instructions"><%=recipe.instructions[i]%></textarea>
+        <%}%>
+        <div id="extraFieldsDirections"></div>
+        <a href="#" onclick="addFieldsDirections()">Add More Steps</a>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary compose-submit" type="submit">Update</button>
+</form>
+</div>
+
+
+
+<%- include("partials/footer"); -%>

@@ -220,7 +220,7 @@ app.get("/", function(req, res) {
         });
       });
     }
-  });
+  }).sort({$natural:-1});;
 });
 
 
@@ -266,6 +266,52 @@ app.post("/compose", upload.single('file'), function(req, res) {
         });
       }
     }
+  });
+});
+
+
+// @route GET /posts/:postId/:filename
+// @desc  Display recipe's detail
+app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
+  const requestedUserId = req.params.userId;
+  const requestedRecipeIndex = req.params.recipeIndex;
+
+  User.findOne({
+    _id: requestedUserId
+  }, function(err, user) {
+    var currentRecipe = user.recipes[requestedRecipeIndex];
+    var imgName = currentRecipe.image.get('filename');
+    res.render("post", {
+      userId: req.params.userId,
+      username: user.username,
+      title: currentRecipe.title,
+      serving: currentRecipe.serving,
+      prepareTimeHour: currentRecipe.prepareTimeHour,
+      prepareTimeMin: currentRecipe.prepareTimeMin,
+      cookTimeHour: currentRecipe.cookTimeHour,
+      cookTimeMin: currentRecipe.cookTimeMin,
+      totalTimeHour: currentRecipe.totalTimeHour,
+      totalTimeMin: currentRecipe.totalTimeMin,
+      introduction: currentRecipe.introduction,
+      ingredients: currentRecipe.ingredients,
+      instructions: currentRecipe.instructions,
+      image: imgName,
+      currentUser: req.user
+    });
+  });
+});
+
+
+// @route GET /image/:filename
+// @desc  Get image
+app.get("/image/:filename", function(req, res) {
+  var requestedFilename = req.params.filename;
+
+  gfs.files.findOne({
+    filename: requestedFilename
+  }, (err, file) => {
+    var readstream = gfs.createReadStream(file.filename);
+    readstream.pipe(res);
   });
 });
 
@@ -321,51 +367,58 @@ app.get("/delete/:userId/:recipeId", function(req, res){
 });
 
 
-// @route GET /posts/:postId/:filename
-// @desc  Display recipe's detail
-app.get("/posts/:userId/:recipeIndex/:filename", function(req, res) {
+// @route GET /edit/:userId/:recipeId
+// @desc Edit a recipe
+app.get("/edit/:userId/:recipeId", function(req, res){
   const requestedUserId = req.params.userId;
-  const requestedRecipeIndex = req.params.recipeIndex;
+  const requestedRecipeId = req.params.recipeId;
 
-  User.findOne({
-    _id: requestedUserId
-  }, function(err, user) {
-    var currentRecipe = user.recipes[requestedRecipeIndex];
-    var imgName = currentRecipe.image.get('filename');
-    res.render("post", {
-      userId: req.params.userId,
-      username: user.username,
-      title: currentRecipe.title,
-      serving: currentRecipe.serving,
-      prepareTimeHour: currentRecipe.prepareTimeHour,
-      prepareTimeMin: currentRecipe.prepareTimeMin,
-      cookTimeHour: currentRecipe.cookTimeHour,
-      cookTimeMin: currentRecipe.cookTimeMin,
-      totalTimeHour: currentRecipe.totalTimeHour,
-      totalTimeMin: currentRecipe.totalTimeMin,
-      introduction: currentRecipe.introduction,
-      ingredients: currentRecipe.ingredients,
-      instructions: currentRecipe.instructions,
-      image: imgName,
-      currentUser: req.user
+  User.findOne({_id: requestedUserId}, function(err, foundUser){
+    if(err){
+      console.log(err);
+    } else {
+      var editRecipe = foundUser.recipes.id(requestedRecipeId);
+      res.render("edit", {recipe: editRecipe, user: foundUser, currentUser: foundUser});
+    }
+  })
+});
+
+
+// @route POST /edit/:userId/:recipeId
+// @desc Edit a recipe
+app.post("/edit/:userId/:recipeId", upload.single('file'), function(req, res){
+  const requestedUserId = req.params.userId;
+  const requestedRecipeId = req.params.recipeId;
+
+  User.findOne({_id: requestedUserId}, function(err, foundUser){
+    var recipe = foundUser.recipes.id(req.params.recipeId);
+    recipe.set({
+      title : req.body.recipeTitle,
+      serving: req.body.servingNumber,
+      prepareTimeHour: req.body.prepareTimeHour,
+      prepareTimeMin: req.body.prepareTimeMin,
+      cookTimeHour: req.body.cookTimeHour,
+      cookTimeMin: req.body.cookTimeMin,
+      totalTimeHour: req.body.totalTimeHour,
+      totalTimeMin: req.body.totalTimeMin,
+      introduction: req.body.introduction,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      image: req.file,
+      upsert: true,
+      new: true
+    });
+    foundUser.markModified('recipes');
+    foundUser.save(function(err){
+      if(err){
+        console.log(err);
+      } else {
+        console.log(recipe);
+        res.redirect("/profile");
+      }
     });
   });
 });
-
-
-// @route GET /image/:filename
-// @desc  Get image
-app.get("/image/:filename", function(req, res) {
-  var requestedFilename = req.params.filename;
-
-  gfs.files.findOne({
-    filename: requestedFilename
-  }, (err, file) => {
-    var readstream = gfs.createReadStream(file.filename);
-    readstream.pipe(res);
-  });
-});
-
 
 
 // @route POST /search
@@ -421,7 +474,6 @@ app.post("/login", function(req, res) {
     }
   });
 });
-
 
 
 const port = process.env.PORT || 3000;
