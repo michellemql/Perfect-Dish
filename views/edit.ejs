@@ -1,8 +1,5 @@
 <%- include("partials/header"); -%>
 
-
-<p><%=recipe.title%></p>
-
 <script>
 function addFieldsIngredients(){
   var extraFields = document.getElementById("extraFieldsIngredients");
@@ -38,7 +35,7 @@ function addFieldsDirections(){
           <div class="form-group">
             <label for="file">Recipe Photo</label>
             <%var imgFileName=recipe.image.get('filename');%>
-            <img class="home-card-img" src="/image/<%= imgFileName %>" alt="recipe-image">
+            <img class="original-img" src="/image/<%= imgFileName %>" alt="recipe-image">
             <input class="form-control" type="file" name="file" id="file">
           </div>
         </div>
@@ -128,7 +125,5 @@ function addFieldsDirections(){
   <button class="btn btn-primary compose-submit" type="submit">Update</button>
 </form>
 </div>
-
-
 
 <%- include("partials/footer"); -%>

@@ -334,6 +334,11 @@ h4 {
   color: #e1c258;
 }
 
+/* Edit */
+.original-img {
+  width: 50%;
+  display: block;
+}
 
 /* Register/Login */
 .container-login {
