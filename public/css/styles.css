@@ -311,6 +311,10 @@ h4 {
   padding: 20px 12px 0;
 }
 
+.profile-card-body>a>span {
+  font-size: 1.55rem;
+}
+
 .profile-divider>hr {
   margin-top: 12px;
   margin-bottom: 32px;
@@ -320,18 +324,19 @@ h4 {
   position:absolute;
   bottom: 7px;
   right: 26px;
+  color: #7f7f7f;
 }
 
-.update>.edit {
+/* .update>.edit {
   color: blue;
 }
 
 .update>.delete {
   color: red;
-}
+} */
 
-.delete:hover {
-  color: #e1c258;
+.update>p {
+  display: inline;
 }
 
 /* Edit */
