@@ -16,6 +16,7 @@ const session = require('express-session');
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const passportLocalMongoose = require("passport-local-mongoose");
+const flash = require('connect-flash');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
@@ -25,18 +26,16 @@ const _ = require("lodash");
 const app = express();
 
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(methodOverride('_method'));
-
 app.use(session({
   secret: "Our little secret.",
   resave: false,
   saveUninitialized: false
 }));
-
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -71,18 +70,47 @@ const userSchema = new mongoose.Schema({
   }]
 });
 
-userSchema.plugin(passportLocalMongoose);
+var options = {
+  errorMessages: {
+  MissingPasswordError: 'No password was given',
+  AttemptTooSoonError: 'Account is currently locked. Try again later',
+  TooManyAttemptsError: 'Account locked due to too many failed login attempts',
+  NoSaltValueStoredError: 'Authentication not possible. No salt value stored',
+  IncorrectPasswordError: 'Incorrect username or password',
+  IncorrectUsernameError: 'Incorrect username or password',
+  MissingUsernameError: 'No username was given',
+  UserExistsError: 'A user with the given username is already registered'
+  }
+};
+
+userSchema.plugin(passportLocalMongoose, options);
 userSchema.plugin(findOrCreate);
 
 const User = conn.model("User", userSchema);
 
 
 // Passport Strategy
-passport.use(User.createStrategy());
+passport.use(User.createStrategy({
+  passReqToCallback: true
+},
+  (req, username, password, authCheckdone) => {
+    User.findOne({username: username}, (err, user) => {
+      if(err) authCheckdone(err)
+      if(!user){
+        return authCheckdone(null, false, req.flash('error', 'User does not exist'))
+      }
+      if(user.password !== password) {
+        return authCheckdone(null, false, req.flash('error', 'Password incorrect'));
+      }
+      return authCheckdone(null, user);
+    });
+  }
+));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
+
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
@@ -161,12 +189,13 @@ const upload = multer({
 
 // @route GET /register
 app.get("/register", function(req, res) {
-  res.render("register", {currentUser: req.user});
+  res.render("register", {errors: [], currentUser: req.user});
 });
 
 // @route GET /login
 app.get("/login", function(req, res) {
-  res.render("login", {currentUser: req.user});
+  const errors = req.flash().error || [];
+  res.render("login", {errors, currentUser: req.user});
 });
 
 // @route GET /logout
@@ -175,6 +204,43 @@ app.get("/logout", function(req, res) {
   res.redirect("/");
 });
 
+// @route POST /register
+// @desc  User register
+app.post("/register", function(req, res) {
+  User.register({
+    username: req.body.username
+  }, req.body.password, function(err, user) {
+    if (err) {
+      console.log(err);
+      res.render("register", {errors: err.message, currentUser: req.user});
+    } else {
+      passport.authenticate("local")(req, res, function() {
+        res.redirect("/");
+      });
+    }
+  });
+});
+
+// @route POST /login
+// @desc  User login
+app.post("/login", function(req, res) {
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+  req.login(user, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      passport.authenticate("local", {
+        failureFlash : true,
+        failureRedirect: "/login"
+      })(req, res, function() {
+        res.redirect("/");
+      });
+    }
+  });
+});
 
 // @route GET /auth/google
 // @desc Google OAuth
@@ -439,41 +505,7 @@ app.post("/search", function(req, res) {
 });
 
 
-// @route POST /register
-// @desc  User register
-app.post("/register", function(req, res) {
-  User.register({
-    username: req.body.username
-  }, req.body.password, function(err, user) {
-    if (err) {
-      console.log(err);
-      res.redirect("/register");
-    } else {
-      passport.authenticate("local")(req, res, function() {
-        res.redirect("/");
-      });
-    }
-  });
-});
 
-
-// @route POST /login
-// @desc  User login
-app.post("/login", function(req, res) {
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
-  req.login(user, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      passport.authenticate("local")(req, res, function() {
-        res.redirect("/");
-      });
-    }
-  });
-});
 
 
 const port = process.env.PORT || 3000;
