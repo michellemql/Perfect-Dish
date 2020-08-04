@@ -1,7 +1,7 @@
 <%- include("partials/header"); -%>
 
 <div class="container-home">
-  <div class="row">
+  <div class="row home-row">
     <% users.forEach(function(user){ %>
     <% for(let i = 0; i < user.recipes.length; i++){ %>
     <% if(user.recipes[i].title.includes(matchRecipeTitle)){ %>
