@@ -32,9 +32,9 @@
           <p class="card-text"><%=user.recipes[i].introduction.length < 40 ? user.recipes[i].introduction : user.recipes[i].introduction.substring(0, 40) + "..."%></p>
           <%if(currentUser != null && user == currentUser){%>
             <div class="update">
-              <a href="/edit/<%=user._id%>/<%=user.recipes[i]._id%>">Edit</a>
+              <a href="/edit/<%=user._id%>/<%=user.recipes[i]._id%>"><i class="fas fa-edit"></i></a>
               <p>|</p>
-              <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>">Delete</a>
+              <a href="/delete/<%=user._id%>/<%=user.recipes[i]._id%>"><i class="fas fa-trash-alt"></i></a>
             </div>
           <%}%>
           </div>
